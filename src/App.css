@@ -419,3 +419,52 @@ body {
   background-color: rgba(196, 112, 79, 0.03);
   border-color: var(--terracotta) !important;
 }
+
+.card-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+.btn-action {
+  background: var(--warm-white);
+  border: 1px solid var(--sand);
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(74, 55, 40, 0.02);
+}
+
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(74, 55, 40, 0.08);
+}
+
+.btn-action:first-child:hover {
+  background: var(--sand);
+  border-color: var(--taupe);
+}
+
+.btn-action:last-child:hover {
+  background: rgba(162, 70, 50, 0.1);
+  border-color: var(--danger);
+}
+
+.recent-item .btn-action {
+  background: transparent;
+  border-color: rgba(232, 221, 208, 0.5);
+}
+
+.recent-item .btn-action:hover {
+  background: var(--cream);
+}
+
+.recent-item .btn-action:last-child:hover {
+  background: rgba(162, 70, 50, 0.1);
+}
