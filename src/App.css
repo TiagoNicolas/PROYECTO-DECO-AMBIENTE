@@ -13,6 +13,7 @@
   --sage: #8A9E8A;
   --charcoal: #2C2C2C;
   --gold: #BFA060;
+  --danger: #A24632;
 }
 
 body {
@@ -230,7 +231,6 @@ body {
 }
 .btn-hero-ghost:hover { border-color: var(--taupe); }
 
-
 .stats-row {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
   margin-bottom: 40px;
@@ -266,14 +266,22 @@ body {
 }
 .stat-trend { font-size: 11px; color: var(--sage); margin-top: 4px; }
 
-
 .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px; font-weight: 400;
   color: var(--espresso); margin-bottom: 18px;
 }
 .section-title em { font-style: italic; color: var(--terracotta); }
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.section-header-row .section-title { margin-bottom: 0; }
 
 .recent-list { display: flex; flex-direction: column; gap: 10px; }
 .recent-item {
@@ -312,7 +320,28 @@ body {
 .palette-swatches { display: flex; gap: 6px; }
 .swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); }
 
-.section-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.filter-bar {
+  display: flex; gap: 10px; margin-bottom: 28px; align-items: center;
+  flex-wrap: wrap;
+}
+.filter-chip {
+  padding: 7px 16px; border-radius: 20px;
+  font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; font-weight: 500;
+  cursor: pointer; border: 1px solid var(--sand);
+  background: white; color: var(--mocha);
+  transition: all 0.2s;
+}
+.search-input {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: 1px solid var(--sand); border-radius: 2px;
+  font-family: 'Jost', sans-serif; font-size: 12px;
+  background: white; color: var(--charcoal);
+  outline: none; min-width: 200px;
+}
+.search-input:focus { border-color: var(--taupe); }
+.search-input::placeholder { color: var(--taupe); }
 
 .rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .room-card {
@@ -367,3 +396,26 @@ body {
 .mueble-price { font-size: 16px; font-weight: 500; color: var(--espresso); }
 .mueble-price span { font-size: 11px; font-weight: 300; color: var(--mocha); }
 .mueble-room { font-size: 10px; color: var(--sage); letter-spacing: 0.08em; }
+
+.tag {
+  display: inline-block; padding: 3px 9px;
+  border-radius: 20px; font-size: 10px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 500;
+}
+.tag-wood   { background: rgba(139,115,85,0.12);  color: var(--mocha); }
+.tag-metal  { background: rgba(191,160,96,0.12);  color: var(--gold); }
+.tag-fabric { background: rgba(138,158,138,0.15); color: var(--sage); }
+.tag-glass  { background: rgba(196,181,165,0.2);  color: #7A6A5C; }
+
+.add-card {
+  border: 2px dashed var(--sand) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+}
+.add-card:hover {
+  background-color: rgba(196, 112, 79, 0.03);
+  border-color: var(--terracotta) !important;
+}
