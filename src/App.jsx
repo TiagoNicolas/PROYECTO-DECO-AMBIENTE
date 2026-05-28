@@ -206,3 +206,115 @@ function HomePage({ setPage }) {
     </>
   );
 }
+
+function AmbientesPage() {
+  const filters = ["Todos", "Sala de Estar", "Dormitorio", "Comedor", "Baño", "Cocina", "Estudio"];
+
+  return (
+    <>
+      <div className="page-header">
+        <div>
+          <div className="page-title">Gestión de <em>Ambientes</em></div>
+          <div className="page-subtitle">{ambientes.length} espacios registrados</div>
+        </div>
+        <div className="header-actions">
+          <button className="btn btn-outline">Exportar</button>
+          <button className="btn btn-primary">+ Nuevo ambiente</button>
+        </div>
+      </div>
+
+      <div className="page-content">
+        <div className="filter-bar">
+          {filters.map(f => (
+            <div key={f} className="filter-chip">{f}</div>
+          ))}
+          <input className="search-input" placeholder="Buscar ambiente..." />
+        </div>
+
+        <div className="rooms-grid">
+          {ambientes.map(a => (
+            <div key={a.id} className="room-card">
+              <div className="room-card-img" style={{ background: a.bg }}>
+                <span style={{ fontSize: 52 }}>{a.emoji}</span>
+                <div className={`room-card-badge ${statusClass[a.status]}`}>{statusLabel[a.status]}</div>
+              </div>
+              <div className="room-card-body">
+                <div className="room-card-name">{a.name}</div>
+                <div className="room-card-type">{a.type}</div>
+                <div className="room-card-info">
+                  <div className="info-item"><strong>{a.m2} m²</strong>Superficie</div>
+                  <div className="info-item"><strong>{a.muebles}</strong>Elementos</div>
+                </div>
+                <div className="room-palette">
+                  {a.palette.map((c, i) => <div key={i} className="mini-swatch" style={{ background: c }} />)}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div className="room-card add-card">
+            <div style={{ textAlign: "center", color: "var(--taupe)" }}>
+              <div style={{ fontSize: 32, marginBottom: 8 }}>+</div>
+              <div style={{ fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Agregar ambiente</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+function MobiliarioPage() {
+  const filters = ["Todos", "Asientos", "Dormitorio", "Almacenamiento", "Iluminación", "Decoración", "Mesas"];
+
+  return (
+    <>
+      <div className="page-header">
+        <div>
+          <div className="page-title">Gestión de <em>Mobiliario</em></div>
+          <div className="page-subtitle">{muebles.length} elementos · Gestión interactiva</div>
+        </div>
+        <div className="header-actions">
+          <button className="btn btn-outline">Importar lista</button>
+          <button className="btn btn-primary">+ Nuevo elemento</button>
+        </div>
+      </div>
+
+      <div className="page-content">
+        <div className="filter-bar">
+          {filters.map(f => (
+            <div key={f} className="filter-chip">{f}</div>
+          ))}
+          <input className="search-input" placeholder="Buscar elemento..." />
+        </div>
+
+        <div className="muebles-grid">
+          {muebles.map(m => (
+            <div key={m.id} className="mueble-card">
+              <div className="mueble-img">{m.emoji}</div>
+              <div className="mueble-body">
+                <div className="mueble-name">{m.name}</div>
+                <div className="mueble-cat">{m.cat}</div>
+                <div style={{ marginTop: 8 }}>
+                  <span className={`tag ${m.tag}`}>{m.material}</span>
+                </div>
+                <div className="mueble-footer">
+                  <div className="mueble-price">$ {m.price}<span> ARS</span></div>
+                  <div className="mueble-room">📍 {m.room}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div className="mueble-card add-card">
+            <div style={{ textAlign: "center", color: "var(--taupe)" }}>
+              <div style={{ fontSize: 28, marginBottom: 6 }}>+</div>
+              <div style={{ fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase" }}>Agregar elemento</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
