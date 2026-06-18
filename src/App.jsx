@@ -72,8 +72,10 @@ export default function App() {
         </div>
       </aside>
       <main className="main">
-        {page === "home" && <HomePage setPage={setPage} />}
-      </main>
+  {page === "home" && <HomePage setPage={setPage} />}
+  {page === "ambientes" && <AmbientesPage />}
+  {page === "mobiliario" && <MobiliarioPage />}
+</main>
     </div>
   );
 }
