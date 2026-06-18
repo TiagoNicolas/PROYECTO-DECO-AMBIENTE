@@ -1,3 +1,4 @@
+//endpoint ambientes
 const express = require("express");
 const cors = require("cors");
 const db = require("./config/db");
@@ -23,4 +24,15 @@ app.get("/api/ambientes", (req, res) => {
 
 app.listen(3001, () => {
   console.log("Servidor funcionando en puerto 3001");
+});
+
+//endpoint mobiliario
+app.get("/api/mobiliario", (req, res) => {
+  db.query("SELECT * FROM mobiliario", (err, results) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+
+    res.json(results);
+  });
 });
