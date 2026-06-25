@@ -225,28 +225,51 @@ function AmbientesPage() {
     <>
       <div className="page-header">
         <div>
-          <div className="page-title">Gestión de <em>Ambientes</em></div>
-          <div className="page-subtitle">{ambientes.length} espacios registrados</div>
+          <div className="page-title">
+            Gestión de <em>Ambientes</em>
+          </div>
+
+          <div className="page-subtitle">
+            {ambientes.length} espacios registrados
+          </div>
         </div>
       </div>
 
       <div className="page-content">
         <div className="filter-bar">
-          {filters.map(f => (
-            <div key={f} className="filter-chip">{f}</div>
+          {filters.map((f) => (
+            <div key={f} className="filter-chip">
+              {f}
+            </div>
           ))}
         </div>
 
         <div className="rooms-grid">
-          {ambientes.map(a => (
+          {ambientes.map((a) => (
             <div key={a.id} className="room-card">
               <div className="room-card-body">
-                <div className="room-card-name">{a.nombre}</div>
-                <div className="room-card-type">{a.tipo}</div>
+                <div className="room-card-name">
+                  {a.nombre}
+                </div>
+
+                <div className="room-card-type">
+                  {a.tipo}
+                </div>
 
                 <div className="room-card-info">
                   <div className="info-item">
                     <strong>{a.metros_cuadrados} m²</strong>
+                    <div>Superficie</div>
+                  </div>
+
+                  <div className="info-item">
+                    <strong>{a.cantidad_muebles}</strong>
+                    <div>Muebles</div>
+                  </div>
+
+                  <div className="info-item">
+                    <strong>{a.estado}</strong>
+                    <div>Estado</div>
                   </div>
                 </div>
               </div>
