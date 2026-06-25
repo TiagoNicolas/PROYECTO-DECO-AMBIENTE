@@ -213,7 +213,7 @@ function AmbientesPage() {
   const [ambientes, setAmbientes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/ambientes")
+    fetch("http://localhost/backend/api/ambientes.php")
       .then((res) => res.json())
       .then((data) => setAmbientes(data))
       .catch((err) => console.error(err));
@@ -286,7 +286,7 @@ function MobiliarioPage() {
   const [muebles, setMuebles] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/mobiliario")
+    fetch("http://localhost/backend/api/mobiliario.php")
       .then((res) => res.json())
       .then((data) => setMuebles(data))
       .catch((err) => console.error(err));
