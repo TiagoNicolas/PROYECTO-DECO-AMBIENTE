@@ -7,7 +7,6 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 
 switch ($metodo) {
 
-    // GET AMBIENTES
     case 'GET':
         $resultado = mysqli_query($conexion, "SELECT * FROM ambientes");
 
@@ -25,32 +24,30 @@ switch ($metodo) {
         echo json_encode($ambientes);
         break;
 
-    // AGREGAR AMBIENTE
-    case 'POST':
-        $datos = json_decode(file_get_contents("php://input"), true);
+case 'POST':
+    $datos = json_decode(file_get_contents("php://input"), true);
 
-        $nombre = $datos['nombre'];
-        $tipo = $datos['tipo'];
-        $metros_cuadrados = $datos['metros_cuadrados'];
-        $cantidad_muebles = $datos['cantidad_muebles'];
-        $estado = $datos['estado'];
+    $nombre = $datos['nombre'];
+    $tipo = $datos['tipo'];
+    $metros_cuadrados = $datos['metros_cuadrados'];
+    $cantidad_muebles = $datos['cantidad_muebles'];
+    $estado = $datos['estado'];
 
-        $stmt = mysqli_prepare(
-            $conexion,
-            "INSERT INTO ambientes (nombre, tipo, metros_cuadrados, cantidad_muebles, estado) VALUES (?, ?, ?, ?, ?)"
-        );
-        mysqli_stmt_bind_param($stmt, "ssdis", $nombre, $tipo, $metros_cuadrados, $cantidad_muebles, $estado);
+    $stmt = mysqli_prepare(
+        $conexion,
+        "INSERT INTO ambientes (nombre, tipo, metros_cuadrados, cantidad_muebles, estado) VALUES (?, ?, ?, ?, ?)"
+    );
+    mysqli_stmt_bind_param($stmt, "ssisi", $nombre, $tipo, $metros_cuadrados, $cantidad_muebles, $estado);
 
-        if (!mysqli_stmt_execute($stmt)) {
-            http_response_code(500);
-            echo json_encode(["error" => mysqli_stmt_error($stmt)]);
-            break;
-        }
-
-        echo json_encode(["mensaje" => "Ambiente agregado"]);
+    if (!mysqli_stmt_execute($stmt)) {
+        http_response_code(500);
+        echo json_encode(["error" => mysqli_stmt_error($stmt)]);
         break;
+    }
 
-    // MODIFICAR AMBIENTE
+    echo json_encode(["mensaje" => "Ambiente agregado", "id" => mysqli_insert_id($conexion)]);
+    break;
+
     case 'PUT':
         $id = $_GET['id'];
 
@@ -77,7 +74,6 @@ switch ($metodo) {
         echo json_encode(["mensaje" => "Ambiente actualizado"]);
         break;
 
-    // BORRAR AMBIENTE
     case 'DELETE':
         $id = $_GET['id'];
 
